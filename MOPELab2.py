@@ -6,14 +6,14 @@ def r_crit(m):
     table_values = {2: 1.73, 6: 2.16, 8: 2.43, 10: 2.62, 12: 2.75, 15: 2.9, 20: 3.08}
     for i in range(len(table_values.keys())):
         if m == list(table_values.keys())[i]:
-            return list(table_values.values())[i]
+            return list(table_values.values())[i]                  # возвращает табличное значение функции Романовского если m есть в таблице.
         if m < list(table_values.keys())[i]:
-            right_dist = abs(list(table_values.keys())[i]-m)
-            left_dist = abs(list(table_values.keys())[i-1]-m)
+            right_dist = abs(list(table_values.keys())[i] - m)
+            left_dist = abs(list(table_values.keys())[i - 1] - m)
             if left_dist < right_dist:
-                return list(table_values.keys())[i-1]
+                return list(table_values.keys())[i - 1]            # если m ближе к левому значению вернуть левое значение.
             else:
-                return list(table_values.keys())[i]
+                return list(table_values.keys())[i]                # в остальных случаях вернуть правое значение.
 
 
 def det(matrix):
@@ -60,7 +60,7 @@ def main():
     r23 = abs(t23 - 1) / main_deviation
     r13 = abs(t13 - 1) / main_deviation
 
-    r_kr = r_crit(m)
+    r_kr = r_crit(m)  # Создаем переменную r_kr и присваиваем ей значение функции r_crit которая принимает аргумент m и по нему возвр ближайшее табличное значение.
 
     print(f'y_min={y_min}')
     print(f'y_max={y_max}')
@@ -78,7 +78,7 @@ def main():
     print('\nОсновне відхилення:')
     print(f'{main_deviation:.3f}')
     print("\nКритерії Романовського")
-    print(f'r12={r12:.3f}', '<' if r12 < r_kr else '>',f'r_kr={r_kr:.3f}')
+    print(f'r12={r12:.3f}', '<' if r12 < r_kr else '>', f'r_kr={r_kr:.3f}')
     print(f'r23={r23:.3f}', '<' if r23 < r_kr else '>', f'r_kr={r_kr:.3f}')
     print(f'r13={r13:.3f}', '<' if r13 < r_kr else '>', f'r_kr={r_kr:.3f}')
 
@@ -97,10 +97,12 @@ def main():
         a2 = sum(i[0] * i[1] for i in matrixNorm_x1_x2) / len(matrixNorm_x1_x2)
         a3 = sum(i[1] ** 2 for i in matrixNorm_x1_x2) / len(matrixNorm_x1_x2)
         a11 = sum(
-            matrixNorm_x1_x2[i][0] * [aver_arithm1, aver_arithm2, aver_arithm3][i] for i in range(len(matrixNorm_x1_x2))) / len(
+            matrixNorm_x1_x2[i][0] * [aver_arithm1, aver_arithm2, aver_arithm3][i] for i in
+            range(len(matrixNorm_x1_x2))) / len(
             matrixNorm_x1_x2)
         a22 = sum(
-            matrixNorm_x1_x2[i][1] * [aver_arithm1, aver_arithm2, aver_arithm3][i] for i in range(len(matrixNorm_x1_x2))) / len(
+            matrixNorm_x1_x2[i][1] * [aver_arithm1, aver_arithm2, aver_arithm3][i] for i in
+            range(len(matrixNorm_x1_x2))) / len(
             matrixNorm_x1_x2)
         matrix_b = [
             [1, mx_list[0], mx_list[1]],
