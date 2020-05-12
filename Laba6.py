@@ -324,6 +324,8 @@ def main(m, n):
             f"Start again with m = {m} and n = {n}")
         return main(m=m, n=n)
     else:
+        print(f'кiлькiсть незначимих коеф {d}, кiлькiсть значимих коеф {n-d}, спiввiдношення значимих до незначимих {(n-d)/d}')
+
         print(
             f"fP = {f_p} < fT = {get_value(f_t, f_3)[f_4]}.\n"
             f"The mathematical model is adequate to the experimental data\n")
